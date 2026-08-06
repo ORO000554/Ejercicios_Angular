@@ -1,0 +1,39 @@
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.button2 {
+    background-color: #1c631db9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.button2:hover {
+    background-color: #124c18;
+}
+
+.button3 {
+    background-color: #d31a1ab9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.button3:hover {
+    background-color: #6e291b
+}
