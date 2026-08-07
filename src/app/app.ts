@@ -4,10 +4,11 @@ import { Home  } from './home/home';
 import { AppContador } from './contador/contador' ;
 import {FormComponent} from './form/form';
 import { appInterpolacion } from "./Ejercicios/interpolacion";
-import { appClases } from "./Ejercicios/clases"; 
+import { appClases } from "./Ejercicios/clases";
+import { ContadorComponentRedux } from "../Redux/contador.component"; 
 @Component({
   selector: 'app-root',
-  imports: [Home, AppContador, FormComponent, appInterpolacion, appClases],
+  imports: [Home, AppContador, FormComponent, appInterpolacion, appClases, ContadorComponentRedux],
   template: `
   <main>
     <header class="brand-name">
@@ -24,6 +25,8 @@ import { appClases } from "./Ejercicios/clases";
       <app-interpolaion/>
 
       <app-clases/>
+
+      <app-contador-redux/>
     </section>
 
   </main>
