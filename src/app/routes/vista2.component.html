@@ -1,0 +1,9 @@
+<main>
+    <h2>Bienvenido a la vista2</h2>
+    <p>Ejercicio uutilizando router</p>
+    <div class="button-group-dynamic">
+        <button mat-raised-button **ngFor="let id of ids" [routerLink]="['/resource', id]">
+            Resource{{id}}
+        </button>
+    </div>
+</main>

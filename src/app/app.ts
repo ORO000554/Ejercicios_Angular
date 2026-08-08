@@ -5,33 +5,34 @@ import { AppContador } from './contador/contador' ;
 import {FormComponent} from './form/form';
 import { appInterpolacion } from "./Ejercicios/interpolacion";
 import { appClases } from "./Ejercicios/clases";
-import { ContadorComponentRedux } from "../Redux/contador.component"; 
+import { ContadorComponentRedux } from "../Redux/contador.component";
+import { HeaderComponent } from "./routes/header.component"; 
 @Component({
   selector: 'app-root',
-  imports: [Home, AppContador, FormComponent, appInterpolacion, appClases, ContadorComponentRedux],
+  imports: [Home, AppContador, FormComponent, appInterpolacion, appClases, ContadorComponentRedux, HeaderComponent],
   template: `
-  <main>
-    <header class="brand-name">
-      <img class="brand-logo" src="https://static.vecteezy.com/system/resources/previews/000/366/438/non_2x/home-vector-icon.jpg" alt="logo" aria-hidden="true" height="30" width="30"/>
 
-    </header>
-    <section class="content">
-      <app-home/>
+  <div class="container">
+    
+    <div class="container-navbar">
+        <!-- <app-home/> -->
+    <app-header/>
 
-      <app-contador/> 
-      
+    </div>
+
+   <div>
+      <app-contador/>     
       <app-form/>
-      
       <app-interpolaion/>
-
       <app-clases/>
-
       <app-contador-redux/>
-    </section>
+   </div>
+   <div>
+   </div>
 
-  </main>
+  </div>
   `,
-  styleUrls:['./app.css'],
+  styleUrl:'./app.css',
 })
 export class App {
   title = 'homes';

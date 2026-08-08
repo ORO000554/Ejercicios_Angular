@@ -3,9 +3,9 @@ import {Component} from '@angular/core';
 @Component({
     selector: "app-contador",
     template: `
-    <h1>
+    <h5>
     CONTADOR {{contador}}
-    </h1>
+    </h5>
     <button (click)="incrementar()">Incrementar</button>
     <button class= "button2" (click)="decrementar()">Decrementar</button>
     <button class ="button3" (click)="Limpiar()">Resetear</button>
