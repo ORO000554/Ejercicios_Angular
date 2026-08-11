@@ -1,51 +1,30 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Home  } from './home/home';
-import { AppContador } from './contador/contador' ;
-import {FormComponent} from './form/form';
-import { appInterpolacion } from "./Ejercicios/interpolacion";
-import { appClases } from "./Ejercicios/clases";
-import { ContadorComponentRedux } from "../Redux/contador.component";
-import { HeaderComponent } from "./routes/header.component";
-import { TodoComponent } from "../Redux/ListaTareas/todo.component/todo.component";
-import { ThemeComponent } from "../Redux/ModoOscuro/theme.component/theme.component";
-import { CartComponent } from "../Redux/CarritoCompras/cart.component/cart.component"; 
+import { Home } from './home/home';
+import { AppContador } from './contador/contador';
+import { FormComponent } from './form/form';
+import { appInterpolacion } from './Ejercicios/interpolacion';
+import { appClases } from './Ejercicios/clases';
+import { ContadorComponentRedux } from '../Redux/contador.component';
+import { HeaderComponent } from './routes/header.component';
+import { TodoComponent } from '../Redux/ListaTareas/todo.component/todo.component';
+import { ThemeComponent } from '../Redux/ModoOscuro/theme.component/theme.component';
+import { CartComponent } from '../Redux/CarritoCompras/cart.component/cart.component';
 @Component({
   selector: 'app-root',
-  imports: [Home, AppContador, FormComponent, appInterpolacion, appClases, ContadorComponentRedux, HeaderComponent, TodoComponent, ThemeComponent, CartComponent],
+  imports: [
+    HeaderComponent,
+  ],
   template: `
-
-  <div class="container">
-    
-    <div class="container-navbar">
+    <div class="container">
+      <div class="container-navbar">
         <!-- <app-home/> -->
-    <app-header/>
-
+        <app-header />
+      </div>
     </div>
-
-   <div style="margin-top: 10px; padding:10px;" class="tareas-redux">
-      <!-- <app-contador/>     
-      <app-form/>
-      <app-interpolaion/>
-      <app-clases/> -->
-      <app-contador-redux/>
-
-      
-   </div>
-
-   <div>
-      <app-todo/>
-
-      <app-theme/>
-
-      <app-carrritoCompras/>
-   </div>
-
-  </div>
   `,
-  styleUrl:'./app.css',
+  styleUrl: './app.css',
 })
 export class App {
-  title = 'homes';
-  
+  title = 'Pagina';
 }
