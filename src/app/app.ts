@@ -6,10 +6,13 @@ import {FormComponent} from './form/form';
 import { appInterpolacion } from "./Ejercicios/interpolacion";
 import { appClases } from "./Ejercicios/clases";
 import { ContadorComponentRedux } from "../Redux/contador.component";
-import { HeaderComponent } from "./routes/header.component"; 
+import { HeaderComponent } from "./routes/header.component";
+import { TodoComponent } from "../Redux/ListaTareas/todo.component/todo.component";
+import { ThemeComponent } from "../Redux/ModoOscuro/theme.component/theme.component";
+import { CartComponent } from "../Redux/CarritoCompras/cart.component/cart.component"; 
 @Component({
   selector: 'app-root',
-  imports: [Home, AppContador, FormComponent, appInterpolacion, appClases, ContadorComponentRedux, HeaderComponent],
+  imports: [Home, AppContador, FormComponent, appInterpolacion, appClases, ContadorComponentRedux, HeaderComponent, TodoComponent, ThemeComponent, CartComponent],
   template: `
 
   <div class="container">
@@ -20,14 +23,22 @@ import { HeaderComponent } from "./routes/header.component";
 
     </div>
 
-   <div>
-      <app-contador/>     
+   <div style="margin-top: 10px; padding:10px;" class="tareas-redux">
+      <!-- <app-contador/>     
       <app-form/>
       <app-interpolaion/>
-      <app-clases/>
+      <app-clases/> -->
       <app-contador-redux/>
+
+      
    </div>
+
    <div>
+      <app-todo/>
+
+      <app-theme/>
+
+      <app-carrritoCompras/>
    </div>
 
   </div>
