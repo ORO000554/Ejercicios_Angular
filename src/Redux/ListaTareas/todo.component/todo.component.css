@@ -9,7 +9,7 @@ input {
 
 button {
     background-color: rgb(219, 172, 79);
-    border-radius: 25px;
+    border-radius: 10px;
     padding: 10px;
     /* color: white; */
     cursor: pointer;
@@ -27,12 +27,11 @@ ul {
     border: 1px solid #e0e0;
     border-radius: 8px;
     overflow: hidden;
-    background-color: azure;
 }
 
 li {
     display: grid;
     padding: 6px 6px;
     align-items: center;
-    background-color: aliceblue;
+    /* background-color: white; */
 }

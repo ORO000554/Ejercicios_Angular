@@ -12,7 +12,7 @@ import { AsyncPipe, NgFor} from "@angular/common";
     standalone: true,
     imports: [AsyncPipe, NgFor],
     template: `
-    <input #todoInput type="text" placeholder="Nueva tarea">
+    <input style="width: 70%" #todoInput type="text" placeholder="Nueva tarea">
     <button (click)= "guardarTarea(todoInput.value); todoInput.value= ''">Agregar +</button>
 
     <ul>

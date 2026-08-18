@@ -1,11 +1,3 @@
-h5 {
-    text-align: center;
-    font-weight: bold;
-    background-color: blanchedalmond;
-    padding: 15px;
-    border-radius: 10px;
-}
-
 div {
     display: flex;
     flex-direction: row;

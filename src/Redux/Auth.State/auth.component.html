@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <div style="padding: 25px; font-family: sans-serif; max-width: 400px; border: 1px solid #ddd; border-radius: 8px;">
+
+            <!-- ESTADO: CARGANDO -->
+            <div *ngIf="loading$ | async">
+                <p>⏳ Validando credenciales... Por favor espera.</p>
+            </div>
+
+            <!-- ESTADO: NO CONECTADO -->
+            <div *ngIf="!(isLoggedIn$ | async) && !(loading$ | async)">
+                <h3>🔐 Iniciar Sesión</h3>
+                <p>Ingresa a tu cuenta para gestionar tu perfil.</p>
+                <button (click)="onLogin()" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+      Simular Login con Servidor
+    </button>
+            </div>
+
+            <!-- ESTADO: CONECTADO (MUESTRA PERFIL) -->
+            <div *ngIf="(isLoggedIn$ | async) && (user$ | async) as usuario">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img [src]="usuario.avatarUrl" alt="Avatar" style="width: 80px; height: 80px; background: #eee; border-radius: 50%;">
+                    <h3>Bienvenido, {{ usuario.name }}</h3>
+                    <p style="color: gray; font-size: 14px;">{{ usuario.email }}</p>
+                </div>
+
+                <!-- Formulario para editar perfil en el Store -->
+                <div style="margin-bottom: 20px; padding: 10px; background: #f9f9f9; border-radius: 4px;">
+                    <label style="display:block; margin-bottom: 5px; font-size: 12px;">Editar Nombre:</label>
+                    <input #nameInput type="text" [value]="usuario.name" style="width: 70%; padding: 4px;">
+                    <button (click)="onSaveProfile(nameInput.value)" style="padding: 4px 8px; margin-left: 5px;">Guardar</button>
+                </div>
+
+                <button (click)="onLogout()" style="padding: 8px 15px; background-color: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%;">
+      Cerrar Sesión
+    </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+
+</html>
