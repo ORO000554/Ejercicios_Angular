@@ -1,8 +1,10 @@
+// import { reiniciar, decrementar,incrementar } from './../contador.redux';
 import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { incrementar, decrementar, reiniciar } from './contador.redux';
+// import { incrementar, decrementar, reiniciar } from './contador/contador.redux';
 import { AsyncPipe } from "@angular/common";
+import { decrementar, incrementar, reiniciar } from './contador.redux';
 
 @Component({
     selector:'app-contador-redux',

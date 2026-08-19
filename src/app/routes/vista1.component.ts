@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 import { TodoComponent } from "../../Redux/ListaTareas/todo.component/todo.component";
 import { CartComponent } from "../../Redux/CarritoCompras/cart.component/cart.component";
-import { ContadorComponentRedux } from "../../Redux/contador.component";
+// import { ContadorComponentRedux } from "../../Redux/contador.component";
+import { ContadorComponentRedux } from '../../Redux/contador/contador.component';
 
 @Component ({
     selector: 'vista1-component',

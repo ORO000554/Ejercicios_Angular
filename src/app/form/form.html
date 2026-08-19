@@ -1,11 +1,25 @@
-<p>Formulario</p>
-<form>
-    <label for="name">Name:</label>
-    <input placeholder="Irvin Jimenez" type="text" id="name" name="name">
-    <br>
-    <label for="email">Email:</label>
-    <input placeholder="irvin.jimenez@e-openroad.com" type="email" id="email" name="email">
-    <br>
-    <label for="phone">Phone:</label>
-    <input placeholder="442*******" type="text" id="phone" name="phone">
-</form>
+<div class="container" style="display: flex; flex-direction: row;">
+
+    <div class="container">
+
+        <p>Formulario</p>
+        <form>
+            <label for="nombre">Name:</label><br>
+            <input [formControl]="Nombre" type="text" id="nombre" name="nombre">
+            <br>
+            <label for="telefono">Telefono :</label><br>
+            <input [formControl]="Telefono" placeholder="442*******" type="text" id="telefono" name="telefono">
+            <br>
+            <label for="correo">Correo :</label><br>
+            <input [formControl]="Correo" placeholder="@e-openroad.com" type="text" id="phone" name="phone">
+            <br>
+            <label for="usuario">Usuario: </label><br>
+            <input [formControl]="Usuario" type="text" id="usuario" name="usuario">
+        </form>
+    </div>
+    <div class="container">
+        <p>Nombre: {{Nombre.value}}</p>
+
+    </div>
+
+</div>

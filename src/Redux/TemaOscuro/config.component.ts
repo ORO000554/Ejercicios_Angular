@@ -11,7 +11,7 @@ import {inject} from '@angular/core';
     standalone: true,
     imports: [AsyncPipe, NgClass],
     template: `
-    <div class="container" style="width: 80%; heigth: 70%">
+    <div class="container" style="width: 100%; heigth: 100%;">
 
     <div style="" class="panel-config" [ngClass]="{'bg-dark text-white': (esOscuro$ | async)}">
         <h4>

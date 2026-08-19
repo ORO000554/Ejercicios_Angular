@@ -10,7 +10,7 @@ import * as AuthActions from './auth.actions';
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule, AuthComponent],
+  imports: [CommonModule],
   templateUrl: './auth.component.html'
 })
 
@@ -45,7 +45,7 @@ onLogout() {
       // Actualiza el nombre y cambia el avatar usando el nuevo nombre como semilla
       this.store.dispatch(AuthActions.updateProfile({
         name: nuevoNombre,
-        avatarUrl: `https://i.pinimg.com/474x/8c/79/5d/8c795d260c989e57c6627e161864996c.jpg{nuevoNombre}`
+        avatarUrl: 'https://i.pinimg.com/474x/8c/79/5d/8c795d260c989e57c6627e161864996c.jpg'
       }));
     }
   }

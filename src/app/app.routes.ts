@@ -5,7 +5,7 @@ import { ResourceComponent } from './routes/resource.component';
 import { Vista3 } from './routes/vistta3.component';
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/vista1-component', pathMatch: 'full'},
+    {path: '', redirectTo: '/vista2-component', pathMatch: 'full'},
     {path: 'vista1-component', component: Vista1 },
     {path:'vista2-component', component: Vista2},
     {path: 'vista3-component', component: Vista3}
