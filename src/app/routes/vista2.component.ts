@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { AppContador } from "../contador/contador";
 import { FormComponent } from "../form/form";
-import { appInterpolacion } from "../Ejercicios/interpolacion";
 import { appClases } from "../Ejercicios/clases";
 
 
@@ -19,7 +18,7 @@ import { appClases } from "../Ejercicios/clases";
       <app-clases/>
     </div> -->
     `,
-    imports: [AppContador, FormComponent, appInterpolacion, appClases],
+    imports: [AppContador, FormComponent, appClases],
     templateUrl:'./vista2.component.html'
 
 })

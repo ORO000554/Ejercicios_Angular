@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
 import {provideStore, provideState} from '@ngrx/store';
-import { todoReducer } from '../Redux/ListaTareas/todo.reducer';
+import { todoReducer } from '../Redux/ListaTareas/store/todo.reducer';
 // import { themeReducer } from '../Redux/ModoOscuro/theme.reducer';
 import { cartReduccer } from '../Redux/CarritoCompras/cart.reducer';
 import { temaReducer } from '../Redux/TemaOscuro/tema.reducer';
@@ -22,6 +22,7 @@ export const appConfig: ApplicationConfig = {
       contador: contadorReducer,
       cart: cartReduccer,
       auth: authReducer,
+      todos: todoReducer,
     }),
 
     provideState({name: 'todos', reducer: todoReducer}),

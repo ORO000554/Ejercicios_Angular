@@ -3,13 +3,14 @@ import {Component} from '@angular/core';
 @Component({
     selector: "app-contador",
     template: `
+    <div style="margin: 2rem;">
     <h5>
     CONTADOR {{contador}}
     </h5>
     <button (click)="incrementar()">Incrementar</button>
     <button class= "button2" (click)="decrementar()">Decrementar</button>
     <button class ="button3" (click)="Limpiar()">Resetear</button>
-    
+    </div>
     `,
     styleUrl:'./contador.css'
 })

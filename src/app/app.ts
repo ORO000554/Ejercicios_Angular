@@ -8,8 +8,8 @@ import { HeaderComponent } from './routes/header.component';
 
 ],
   template: `
-    <div class="container">
-      <div class="container-navbar">
+    <div>
+      <div>
         <!-- <app-home/> -->
         <app-header />
       </div>

@@ -1,25 +1,82 @@
-<div class="container" style="display: flex; flex-direction: row;">
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="container">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Se corrigieron los enlaces de Bootstrap que daban error de integridad -->
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-        <p>Formulario</p>
-        <form>
-            <label for="nombre">Name:</label><br>
-            <input [formControl]="Nombre" type="text" id="nombre" name="nombre">
-            <br>
-            <label for="telefono">Telefono :</label><br>
-            <input [formControl]="Telefono" placeholder="442*******" type="text" id="telefono" name="telefono">
-            <br>
-            <label for="correo">Correo :</label><br>
-            <input [formControl]="Correo" placeholder="@e-openroad.com" type="text" id="phone" name="phone">
-            <br>
-            <label for="usuario">Usuario: </label><br>
-            <input [formControl]="Usuario" type="text" id="usuario" name="usuario">
-        </form>
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-4 d-flex flex-row">
+        <div class="container col-md-6">
+            <p class="h4">Formulario</p>
+
+            <form [formGroup]="formulario" (ngSubmit)="guardarRegistro()">
+                <label for="nombre">Nombre:</label>
+                <input class="form-control" id="nombre" type="text" formControlName="nombre">
+
+                <label for="telefono">Teléfono:</label>
+                <input class="form-control" id="telefono" type="text" formControlName="telefono">
+
+                <label for="correo">Correo:</label>
+                <input class="form-control" id="correo" type="email" formControlName="correo">
+
+                <label for="usuario">Usuario:</label>
+                <input class="form-control" id="usuario" type="text" formControlName="usuario">
+
+                <button type="submit" class="btn btn-primary mt-3">
+        Registrar datos
+      </button>
+            </form>
+        </div>
+
+        <div class="container col-md-6">
+            <p class="h4">Datos de la tabla</p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Correo</th>
+                        <th>Usuario</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let registro of registros">
+                        <td>{{ registro.nombre }}</td>
+                        <td>{{ registro.telefono }}</td>
+                        <td>{{ registro.correo }}</td>
+                        <td>{{ registro.usuario }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="container">
-        <p>Nombre: {{Nombre.value}}</p>
 
-    </div>
 
-</div>
+</body>
+
+</html>
