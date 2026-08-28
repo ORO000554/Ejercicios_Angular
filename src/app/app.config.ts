@@ -11,7 +11,9 @@ import { temaReducer } from '../Redux/TemaOscuro/tema.reducer';
 import { authReducer } from '../Redux/Auth.State/auth.reducer';
 import { contadorReducer } from '../Redux/contador/contador.reductor';
 // import { contadorReducer } from '../Redux/contador/contador.reductor';
-
+import { ClimaEspacialReducer } from './climaRedux/store/reducers/clima-redux.reducers';
+import { provideEffects } from '@ngrx/effects';
+import { ClimaEspacialEffects } from './climaRedux/store/effects/clima-redux.effects';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -23,11 +25,15 @@ export const appConfig: ApplicationConfig = {
       cart: cartReduccer,
       auth: authReducer,
       todos: todoReducer,
+      climaEspacial: ClimaEspacialReducer
+
     }),
+    provideEffects([ClimaEspacialEffects]),
 
     provideState({name: 'todos', reducer: todoReducer}),
     // provideState({name: 'theme', reducer: themeReducer}),
-    provideState({name: 'tema', reducer: temaReducer})
+    provideState({name: 'tema', reducer: temaReducer}),
 
+    // provideState({name: 'climaEspacial', reducer: ClimaEspacialReducer}),
   ]
 };
