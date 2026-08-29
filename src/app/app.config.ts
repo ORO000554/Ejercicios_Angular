@@ -1,8 +1,6 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
-
 import {provideStore, provideState} from '@ngrx/store';
 import { todoReducer } from '../Redux/ListaTareas/store/todo.reducer';
 // import { themeReducer } from '../Redux/ModoOscuro/theme.reducer';
@@ -14,6 +12,8 @@ import { contadorReducer } from '../Redux/contador/contador.reductor';
 import { ClimaEspacialReducer } from './climaRedux/store/reducers/clima-redux.reducers';
 import { provideEffects } from '@ngrx/effects';
 import { ClimaEspacialEffects } from './climaRedux/store/effects/clima-redux.effects';
+import { ViajeReduxReducer } from './viajesRedux/store/reducers/viajes.reducers';
+import { ViajeReduxEffects } from './viajesRedux/store/effects/viajes.effects';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -25,10 +25,11 @@ export const appConfig: ApplicationConfig = {
       cart: cartReduccer,
       auth: authReducer,
       todos: todoReducer,
-      climaEspacial: ClimaEspacialReducer
+      climaEspacial: ClimaEspacialReducer,
+      viajeRedux:ViajeReduxReducer,
 
     }),
-    provideEffects([ClimaEspacialEffects]),
+    provideEffects([ClimaEspacialEffects, ViajeReduxEffects]),
 
     provideState({name: 'todos', reducer: todoReducer}),
     // provideState({name: 'theme', reducer: themeReducer}),

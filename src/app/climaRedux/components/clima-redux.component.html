@@ -1,32 +1,42 @@
-<div class="dashboard-container">
-    <h4>Panel de Clima Espacial</h4>
+<div class="container-fluid shadow p-3 mt-2 mb-5 bg-body-tertiary rounded">
+    <h4 style="text-align: center;">Panel de Clima Espacial</h4>
 
     <!-- 1. Reemplazamos el falso ngFor por un @if para desenvolver el filtro activo -->
     @if (currentFilter$ | async; as activeFilter) {
     <div class="container mt-4 d-flex gap-2 mb-2">
-        <button class="btn btn-primary col-2" [class.active]="activeFilter === 'TODO'" (click)="onFilterChange('TODO')">Ver Todos</button>
-        <button class="btn btn-secondary" [class.active]="activeFilter === 'BAJO'" (click)="onFilterChange('BAJO')">Bajo</button>
-        <button class="btn btn-secondary" [class.active]="activeFilter === 'MEDIO'" (click)="onFilterChange('MEDIO')">Medio</button>
-        <button class="btn btn-secondary" [class.active]="activeFilter === 'ALTO'" (click)="onFilterChange('ALTO')">Alto</button>
-        <button class="btn btn-secondary" [class.active]="activeFilter === 'CRITICO'" (click)="onFilterChange('CRITICO')">Crítico</button>
+        <button type="button" class="btn btn-outline-primary col-2" [class.active]="activeFilter === 'TODO'" (click)="onFilterChange('TODO')">Ver Todos</button>
+        <button type="button" class="btn btn-outline-secondary" [class.active]="activeFilter === 'BAJO'" (click)="onFilterChange('BAJO')">Bajo</button>
+        <button type="button" class="btn btn-outline-secondary" [class.active]="activeFilter === 'MEDIO'" (click)="onFilterChange('MEDIO')">Medio</button>
+        <button type="button" class="btn btn-outline-secondary" [class.active]="activeFilter === 'ALTO'" (click)="onFilterChange('ALTO')">Alto</button>
+        <button type="button" class="btn btn-outline-secondary" [class.active]="activeFilter === 'CRITICO'" (click)="onFilterChange('CRITICO')">Crítico</button>
 
     </div>
     }
-
-    <!-- 2. Reemplazamos el *ngIf de carga por un @if directo -->
+    <!-- <div class="container my-4"> -->
+    <!-- @if directo -->
     @if (!(loading$ | async)) {
-    <div class="grid">
-        <!-- 3. Reemplazamos el *ngFor por el nuevo @for estructurado (requiere 'track') -->
+    <!-- <div class="container mb-2 mt-2 row g-4"> -->
+    <!--  @for estructurado (requiere 'track') -->
+    <div class="row g-3">
         @for (sat of (telemetria$ | async); track sat.idSatelite) {
-        <div class="card">
-            <h3>Satelite: {{ sat.idSatelite }}</h3>
-            <p>Viento Solar: <strong>{{ sat.velVientoSolar }} km/s</strong></p>
-            <p>Probabilidad de Fulguración: <strong>{{ sat.probLlamaradaSolar }}%</strong></p>
-            <span class="badge" [attr.data-level]="sat.nivelRadiacion">
-                        Radiación: {{ sat.nivelRadiacion }}
-                    </span>
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="card m-2  ">
+                <h5 style="text-align: center;">Satelite: {{ sat.idSatelite }}</h5>
+                <div class=" p-2">
+                    <p>Viento Solar: <strong>{{ sat.velVientoSolar }} km/s</strong></p>
+                    <p>Probabilidad de Fulguración: <strong>{{ sat.probLlamaradaSolar }}%</strong></p>
+                    <p> Ultima actualizacion : {{sat.ultimaActualizacion}}</p>
+                    <div class="container" style="display: flex; justify-content: flex-end;">
+                        <span class="badge mb-2 p-2" [ngClass]="{'bg-success': sat.nivelRadiacion === 'BAJO', 'bg-warning': sat.nivelRadiacion === 'MEDIO','bg-danger': sat.nivelRadiacion === 'ALTO' ||  sat.nivelRadiacion === 'CRITICO'}">
+                 Radiación: {{ sat.nivelRadiacion }}
+                </span>
+                    </div>
+                </div>
+            </div>
         </div>
         }
     </div>
+    <!-- </div> -->
     }
+    <!-- </div> -->
 </div>

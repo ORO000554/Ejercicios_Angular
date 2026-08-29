@@ -41,8 +41,6 @@ export class TemaConfigComponent implements OnInit{
     esOscuro$: Observable<boolean> = this.store.select(Selectors.selectEsModoOscuro);
     colorClase$: Observable<string> = this.store.select(Selectors.selectClaseColor);
 
-    // constructor(private store: Store){}
-
     ngOnInit(){
 
         //Al ccargar el ccomponente se intenta leer si hay algo guardado

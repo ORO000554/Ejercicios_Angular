@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as ClimaEspacialSelectors from '../store/selectors/clima-redux.selectors';
@@ -11,7 +11,7 @@ import { SateliteTelemetria } from '../model/clima-redux.model';
   standalone: true,
   templateUrl: './clima-redux.component.html',
   styleUrls: ['./clima-redux.component.css'],
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, NgClass],
 })
 export class ClimaComponent implements OnInit {
   telemetria$!: Observable<SateliteTelemetria[]>;

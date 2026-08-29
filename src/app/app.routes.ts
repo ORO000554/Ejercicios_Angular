@@ -4,6 +4,7 @@ import { Vista2 } from "./routes/vista2.component";
 import { Vista3 } from './routes/vistta3.component';
 import { NotFound } from './notFound/notFound';
 import { ClimaComponent } from './climaRedux/components/clima-redux.component';
+import { ViajeRedux} from './routes/viaje-redux/viaje-redux';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,12 @@ export const routes: Routes = [
       path: 'clima-redux-vista',
       component: ClimaComponent,
       title: 'R+A'
+    },
+    {
+    path: 'viaje-redux-vista',
+    component: ViajeRedux,
+    title: 'Viaje Redux'
+
     },
     {
       path: '**',

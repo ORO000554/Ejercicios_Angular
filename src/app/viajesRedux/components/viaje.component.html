@@ -1,0 +1,47 @@
+<div class="container-fluid shadow p-3 mt-2 mb-5 bg-body-tertiary rounded">
+    <h4 style="text-align: center;">Panel de Viajes</h4>
+
+    <!-- 1. Reemplazamos el falso ngFor por un @if para desenvolver el filtro activo -->
+    @if (currentFilter$ | async; as activeFilter) {
+    <div class="container mt-4 d-flex gap-2 mb-2">
+        <button type="button" class="btn btn-outline-primary col-2" [class.active]="activeFilter === 'TODO'" (click)="onFilterChange('TODO')">Ver Todos</button>
+        <button type="button" class="btn btn-outline-success" [class.active]="activeFilter === 'BARATO'" (click)="onFilterChange('BARATO')">Baratos</button>
+        <button type="button" class="btn btn-outline-warning" [class.active]="activeFilter === 'CARO'" (click)="onFilterChange('CARO')">Caros</button>
+        <button type="button" class="btn btn-outline-danger" [class.active]="activeFilter === 'PREMIUM'" (click)="onFilterChange('PREMIUM')">Premium</button>
+
+    </div>
+    }
+    <!-- <div class="container my-4"> -->
+    <!-- @if directo -->
+    @if (!(loading$ | async)) {
+    <!-- <div class="container mb-2 mt-2 row g-4"> -->
+    <!--  @for estructurado (requiere 'track') -->
+    <div class="row g-3">
+        @for (sat of (viajes$ | async); track sat.idViaje) {
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="card m-2  ">
+                <h5 style="text-align: center;">Viaje: {{ sat.idViaje }}</h5>
+                <div class=" p-2">
+                    <p>Nombre Pasajero: <strong>{{ sat.NombrePasajero }} </strong></p>
+                    <p>Destino: <strong>{{ sat.Destino }}</strong></p>
+                    <p>Fecha de Viaje : {{sat.fecha}}</p>
+                    <div class="container" style="display: flex; justify-content: flex-end;">
+                        <span class="badge mb-2 p-2" [ngClass]="{
+                        'bg-success': sat.Costo === 'BARATO', 
+                        'bg-warning': sat.Costo === 'CARO', 
+                        'bg-danger': sat.Costo === 'PREMIUM'
+                            }">Costo de Viaje: {{ sat.Costo }}
+                      </span>
+                        <!-- <span class="badge mb-2 p-2" [ngClass]="{'bg-success': sat.Costo === 'BARATO', 'bg-warning': sat.Costo === 'CARO', 'bg-danger'  sat.Costo === 'PREMIUM'}">
+                 Costo de Viaje: {{ sat.Costo }}
+                </span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    <!-- </div> -->
+    }
+    <!-- </div> -->
+</div>

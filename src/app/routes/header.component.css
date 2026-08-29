@@ -1,0 +1,23 @@
+nav-item.active .nav-link {
+    background-color: #2d71d0 !important;
+    /* Tu color de fondo */
+    border-color: #385d7d !important;
+    /* Tu color de borde */
+    color: #ffffff !important;
+}
+
+.nav-link {
+    color: #333333;
+    /* Color de los números inactivos */
+    background-color: rgb(232, 235, 238);
+    border: 1px solid #dee2e6;
+}
+
+
+/* Color cuando pasas el mouse por encima (Hover) */
+
+.page-link:hover {
+    background-color: #f8f9fa;
+    color: #2865c1;
+    /* Cambia al color de tu marca */
+}

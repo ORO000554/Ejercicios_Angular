@@ -19,18 +19,26 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a style="font-weight: bold; background-color: rgb(0, 157, 230); color: white; padding-left: 2rem; padding-right: 2rem;" class="navbar-brand" href="#" routerLink="/vista2-component">OPEN ROAD </a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item" style="background-color: rgb(232, 235, 238); margin-right: 1rem ; border-radius: 4px;">
-                        <a class="nav-link active" aria-current="page" href="#" routerLink="/vista2-component">Ejercicios Angular</a>
-                    </li>
-                    <li class="nav-item" style="background-color: rgb(232, 235, 238); margin-right: 1rem; border-radius: 4px;">
-                        <a class="nav-link active" aria-current="page" href="#" routerLink="/vista1-component">Ejercicios Redux</a>
-                    </li>
-                    <li class="nav-item" style="background-color: rgb(232, 235, 238); margin-right: 1rem; border-radius: 4px;">
-                        <a class="nav-link active" aria-current="page" href="#" routerLink="/vista3-component">Redux + Angular</a>
-                    </li>
-                    <li class="nav-item" style="background-color: rgb(232, 235, 238); margin-right: 1rem; border-radius: 4px;">
+                    <button (click)="paginaSeleccionada(1)" type="button" class="btn btn-outline-secondary m-2" [class.active]="PaginaActiva === 1" routerLink="/vista2-component">
+                        <a  style="text-decoration: none;"  >Ejercicios Angular</a>
+                    </button>
+                    <button (click)="paginaSeleccionada(2)" type="button" class="btn btn-outline-secondary m-2" [class.active]="PaginaActiva === 2" routerLink="/vista1-component">
+                        <a  style="text-decoration: none;"  >Ejercicios Redux</a>
+                    </button>
+                    <button (click)="paginaSeleccionada(3)" type="button" class="btn btn-outline-secondary m-2" [class.active]="PaginaActiva ===3" routerLink="/vista3-component">
+                        <a style="text-decoration: none;" >Redux + Angular</a>
+                    </button>
+                    <!-- <li class="nav-item" style="background-color: rgb(232, 235, 238); margin-right: 1rem; border-radius: 4px;">
                         <a class="nav-link active" aria-current="page" href="#" routerLink="/clima-redux-vista">Redux</a>
-                    </li>
+                    </li> -->
+
+                    <button (click)="paginaSeleccionada(4)" type="button" class="btn btn-outline-secondary m-2" [class.active]="PaginaActiva === 4" routerLink="/clima-redux-vista">
+                      <a  style="text-decoration: none;"  >Clima Redux</a>
+                    </button>
+                    <button (click)="paginaSeleccionada(5)" type="button" class="btn btn-outline-secondary m-2" [class.active]="PaginaActiva === 5" routerLink="/viaje-redux-vista">
+                      <a  style="text-decoration: none;"  >Viaje Redux</a>
+                    </button>
+
                 </ul>
                 <form class="d-flex" role="search">
 
