@@ -1,0 +1,38 @@
+<div class="container-fluid mt-4 p-4 d-flex justify-content-center shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded audio-panel  justify-content-center" [class.danger-zone]="isHazardous$ | async">
+        <h2 style="text-align: center;">Panel de Control de Audio</h2>
+
+        <!-- Alerta de volumen peligroso calculada por el Selector -->
+        <p *ngIf="isHazardous$ | async" class="alert">
+            ADVERTENCIA: Configuración peligrosa para los oídos.
+        </p>
+
+        <!-- Controles del Ecualizador -->
+        <div class="sliders" *ngIf="configuracion$ | async as settings">
+            <label>Volumen ({{ settings.volume }}%)
+          <input type="range" min="0" max="100" [value]="settings.volume" (input)="onSliderChange('volume', $event)">
+        </label>
+
+            <label>Graves ({{ settings.bass }} dB)
+          <input type="range" min="-12" max="12" [value]="settings.bass" (input)="onSliderChange('bass', $event)">
+        </label>
+
+            <label>Medios ({{ settings.mids }} dB)
+          <input type="range" min="-12" max="12" [value]="settings.mids" (input)="onSliderChange('mids', $event)">
+        </label>
+        </div>
+
+        <!-- Sección de Hardware (Micrófono) -->
+        <div class="hardware-status">
+            <h4 style="text-align: start;">Hardware Externo</h4>
+            <p>Estado del Micrófono: <strong style="color: green;">{{ status$ | async | uppercase }}</strong></p>
+
+            <button class="btn btn-outline-primary" (click)="onConnectMic()" [disabled]="(status$ | async) === 'connecting' || (status$ | async) === 'connected'">
+          Vincular Micrófono del Sistema
+        </button>
+
+            <p class="error" *ngIf="error$ | async as errMsg">{{ errMsg }}</p>
+        </div>
+    </div>
+
+</div>

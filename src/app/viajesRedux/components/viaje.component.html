@@ -1,7 +1,7 @@
 <div class="container-fluid shadow p-3 mt-2 mb-5 bg-body-tertiary rounded">
     <h4 style="text-align: center;">Panel de Viajes</h4>
 
-    <!-- 1. Reemplazamos el falso ngFor por un @if para desenvolver el filtro activo -->
+    <!-- Utilizacion de filtro @if -->
     @if (currentFilter$ | async; as activeFilter) {
     <div class="container mt-4 d-flex gap-2 mb-2">
         <button type="button" class="btn btn-outline-primary col-2" [class.active]="activeFilter === 'TODO'" (click)="onFilterChange('TODO')">Ver Todos</button>
@@ -15,7 +15,7 @@
     <!-- @if directo -->
     @if (!(loading$ | async)) {
     <!-- <div class="container mb-2 mt-2 row g-4"> -->
-    <!--  @for estructurado (requiere 'track') -->
+    <!--  @for estructurado ('track') -->
     <div class="row g-3">
         @for (sat of (viajes$ | async); track sat.idViaje) {
         <div class="col-12 col-md-6 col-lg-6">
@@ -27,8 +27,8 @@
                     <p>Fecha de Viaje : {{sat.fecha}}</p>
                     <div class="container" style="display: flex; justify-content: flex-end;">
                         <span class="badge mb-2 p-2" [ngClass]="{
-                        'bg-success': sat.Costo === 'BARATO', 
-                        'bg-warning': sat.Costo === 'CARO', 
+                        'bg-success': sat.Costo === 'BARATO',
+                        'bg-warning': sat.Costo === 'CARO',
                         'bg-danger': sat.Costo === 'PREMIUM'
                             }">Costo de Viaje: {{ sat.Costo }}
                       </span>

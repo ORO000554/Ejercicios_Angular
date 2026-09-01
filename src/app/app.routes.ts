@@ -5,6 +5,7 @@ import { Vista3 } from './routes/vistta3.component';
 import { NotFound } from './notFound/notFound';
 import { ClimaComponent } from './climaRedux/components/clima-redux.component';
 import { ViajeRedux} from './routes/viaje-redux/viaje-redux';
+import { AudioComponent } from './ac-Audio/component/audio.component';
 
 export const routes: Routes = [
     {
@@ -38,6 +39,11 @@ export const routes: Routes = [
     component: ViajeRedux,
     title: 'Viaje Redux'
 
+    },
+    {
+      path: 'vista-audio-redux',
+      component: AudioComponent,
+      title: 'Audio Redux'
     },
     {
       path: '**',

@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Pipe } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
+import { Observable, pipe } from "rxjs";
 import { AsyncPipe, NgClass } from "@angular/common";
 import * as Actions from './tema.actions';
 import * as Selectors from './tema.selectors';
@@ -9,26 +9,26 @@ import {inject} from '@angular/core';
 @Component({
     selector: 'app-modoOscurov2',
     standalone: true,
-    imports: [AsyncPipe, NgClass],
+    imports: [AsyncPipe, NgClass, ],
     template: `
-    <div class="container" style="width: 100%; heigth: 100%;">
+    <div class="container" style="width: 100%; heigth: 100%; border-radius: 10px;">
 
     <div style="" class="panel-config" [ngClass]="{'bg-dark text-white': (esOscuro$ | async)}">
         <h4>
             Configuracion de Apariencia
         </h4>
 
-        <button (click)="cambiarModo()">
+        <button type="button" class="btn btn-success m-2" (click)="cambiarModo()">
             Camiar a modo {{(esOscuro$ | async) ? 'Claro' : 'Oscuro'}}
         </button>
 
-        <div style="">
+        <!-- <div style="">
             <span>Color de realce actual : <strong>{{colorClase$ | async }}</strong></span>
             <br>
             <button (click)="cambiarColor('azul')" style="color: blue;">Azul</button>
             <button (click)="cambiarColor('verde')" style="color: green;">Verde</button>
             <button (click)="cambiarColor('rojo')" style="color: red;">Rojo</button>
-        </div>
+        </div> -->
     </div>
     </div>
 
