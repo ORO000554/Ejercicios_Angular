@@ -1,6 +1,7 @@
-<div class="container-fluid mt-4 p-4 d-flex justify-content-center shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
-    <div class="shadow p-3 mb-5 bg-body-tertiary rounded audio-panel  justify-content-center" [class.danger-zone]="isHazardous$ | async">
-        <h2 style="text-align: center;">Panel de Control de Audio</h2>
+<div class="container-fluid justify-content-center shadow p-3 mt-2 mb-5 bg-body-tertiary rounded row">
+    <h4 style=" text-align: center;">Panel de Control de Audio</h4>
+    <div class="shadow-sm p-3 mb-5 bg-body-tertiary rounded audio-panel  justify-content-center" [class.danger-zone]="isHazardous$ | async">
+        <h2 style="text-align: center;">P-C-Audio</h2>
 
         <!-- Alerta de volumen peligroso calculada por el Selector -->
         <p *ngIf="isHazardous$ | async" class="alert">

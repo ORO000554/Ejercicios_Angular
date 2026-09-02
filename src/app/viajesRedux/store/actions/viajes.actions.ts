@@ -18,3 +18,11 @@ export const cambiarFiltradoCosto = createAction(
   '[Viaje Redux UI] Cambiar Filtro Viaje',
   props<{filtro: 'TODO' | 'BARATO' | 'CARO' | 'PREMIUM'}>()
 )
+export const cambiarFiltradoEstado = createAction(
+  '[Viaje Redux UI] Camiar Filtro Estado',
+  props<{filtro: 'TODO' | 'Pendiente' | 'En proceso' | 'Completado' | 'Cancelado'}>()
+)
+export const cambiarFiltroMedioTransporte = createAction(
+  '[Viaje Redux UI] Cambiar Filtro Medio Transporte',
+  props<{filtro: 'TODO' | 'Avion' | 'Tren' | 'Bus' | 'Auto' | 'Barco'}>()
+)

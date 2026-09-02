@@ -37,4 +37,15 @@ export class ViajeReduxComponent implements OnInit{
       ViajeReduxActions.cambiarFiltradoCosto({filtro: newFilter})
     );
   }
+  onFilterChangeEstado(newFilter: 'TODO' | 'Pendiente' | 'En proceso' | 'Completado' | 'Cancelado'): void{
+    this.store.dispatch(
+      ViajeReduxActions.cambiarFiltradoEstado({filtro: newFilter})
+    )
+  }
+
+  onFilterChangeMedioTransporte(newFilter: 'TODO' | 'Avion' | 'Tren' | 'Bus' | 'Auto' | 'Barco'): void{
+    this.store.dispatch(
+      ViajeReduxActions.cambiarFiltroMedioTransporte({filtro: newFilter})
+    )
+    }
 }

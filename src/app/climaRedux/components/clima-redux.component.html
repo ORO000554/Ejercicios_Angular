@@ -15,8 +15,6 @@
     <!-- <div class="container my-4"> -->
     <!-- @if directo -->
     @if (!(loading$ | async)) {
-    <!-- <div class="container mb-2 mt-2 row g-4"> -->
-    <!--  @for estructurado (requiere 'track') -->
     <div class="row g-3">
         @for (sat of (telemetria$ | async); track sat.idSatelite) {
         <div class="col-12 col-md-6 col-lg-6">
@@ -24,7 +22,7 @@
                 <h5 style="text-align: center;">Satelite: {{ sat.idSatelite }}</h5>
                 <div class=" p-2">
                     <p>Viento Solar: <strong>{{ sat.velVientoSolar }} km/s</strong></p>
-                    <p>Probabilidad de Fulguración: <strong>{{ sat.probLlamaradaSolar }}%</strong></p>
+                    <p>Probabilidad de Llamarada solar: <strong>{{ sat.probLlamaradaSolar }}%</strong></p>
                     <p> Ultima actualizacion : {{sat.ultimaActualizacion}}</p>
                     <div class="container" style="display: flex; justify-content: flex-end;">
                         <span class="badge mb-2 p-2" [ngClass]="{'bg-success': sat.nivelRadiacion === 'BAJO', 'bg-warning': sat.nivelRadiacion === 'MEDIO','bg-danger': sat.nivelRadiacion === 'ALTO' ||  sat.nivelRadiacion === 'CRITICO'}">
@@ -37,6 +35,12 @@
         }
     </div>
     <!-- </div> -->
+    }@else{
+    <div class="container d-flex justify-content-center align-items-center" style="height: 200px;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
     }
-    <!-- </div> -->
+
 </div>

@@ -8,13 +8,8 @@ import { HeaderComponent } from './routes/header.component';
 
 ],
   template: `
-    <div>
-      <div>
         <!-- <app-home/> -->
         <app-header />
-      </div>
-
-    </div>
   `,
   styleUrl: './app.css',
 })

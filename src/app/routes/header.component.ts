@@ -1,5 +1,8 @@
 import { Component } from "@angular/core";
 import { RouterLink, RouterOutlet } from "@angular/router";
+import { FormComponent } from "../form/form";
+import { AppContador } from "../contador/contador";
+import { appClases } from "../Ejercicios/clases";
 
 @Component({
     selector: 'app-header',

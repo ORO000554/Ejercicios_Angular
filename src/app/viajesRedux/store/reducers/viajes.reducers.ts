@@ -6,7 +6,9 @@ export const EstadoInicialViajeRedux: EstadoViajeRedux ={
   viajes: [],
   loading: false,
   error: null,
-  filtroCostoSeleccionado: 'TODO'
+  filtroCostoSeleccionado: 'TODO',
+  filtroEstadoSeleccionado: 'TODO',
+  filtroMedioTransporteSeleccionado: 'TODO',
 };
 
 export const ViajeReduxReducer = createReducer(
@@ -31,6 +33,14 @@ export const ViajeReduxReducer = createReducer(
   on(ViajeReduxActions.cambiarFiltradoCosto, (state, { filtro}) => ({
     ...state,
     filtroCostoSeleccionado: filtro
-  }) )
+  }) ),
+  on(ViajeReduxActions.cambiarFiltradoEstado, (state, {filtro}) =>({
+    ...state,
+    filtroEstadoSeleccionado: filtro
+  })),
+  on(ViajeReduxActions.cambiarFiltroMedioTransporte, (state, {filtro}) =>({
+    ...state,
+    filtroMedioTransporteSeleccionado: filtro
+  })),
 
 );

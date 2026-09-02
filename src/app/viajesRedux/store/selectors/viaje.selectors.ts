@@ -18,3 +18,25 @@ export const seleccionarViajeFiltrado = createSelector(
     return state.viajes.filter(v => v.Costo === state?.filtroCostoSeleccionado);
   }
 );
+export const seleccionarViajeFiltradoPorEstado = createSelector(
+  SeleccionarViajeReduxEstado,
+  (state) =>{
+    if(!state|| !state.viajes)
+      return [];
+    if(state?.filtroEstadoSeleccionado === 'TODO'){
+      return state.viajes;
+    }
+    return state.viajes.filter(v => v.estado === state?.filtroEstadoSeleccionado);
+  }
+);
+export const seleccionarViajeFiltradoPorMedioTransporte = createSelector(
+  SeleccionarViajeReduxEstado,
+  (state) =>{
+    if(!state|| !state.viajes)
+      return [];
+    if(state?.filtroMedioTransporteSeleccionado === 'TODO'){
+      return state.viajes;
+    }
+    return state.viajes.filter(v => v.medioTransporte === state?.filtroMedioTransporteSeleccionado);
+  }
+);

@@ -14,8 +14,6 @@
     <!-- <div class="container my-4"> -->
     <!-- @if directo -->
     @if (!(loading$ | async)) {
-    <!-- <div class="container mb-2 mt-2 row g-4"> -->
-    <!--  @for estructurado ('track') -->
     <div class="row g-3">
         @for (sat of (viajes$ | async); track sat.idViaje) {
         <div class="col-12 col-md-6 col-lg-6">
@@ -25,23 +23,56 @@
                     <p>Nombre Pasajero: <strong>{{ sat.NombrePasajero }} </strong></p>
                     <p>Destino: <strong>{{ sat.Destino }}</strong></p>
                     <p>Fecha de Viaje : {{sat.fecha}}</p>
-                    <div class="container" style="display: flex; justify-content: flex-end;">
+                    <p>Origen: <strong>{{sat.origen}}</strong> </p>
+                    <p>Duración del Viaje: <strong>{{sat.duracion}} horas</strong></p>
+
+                    <div class="container">
                         <span class="badge mb-2 p-2" [ngClass]="{
+                        'bg-secondary': sat.medioTransporte === 'Avion',
+                        'bg-primary bg-gradient': sat.medioTransporte === 'Tren',
+                        'bg-success': sat.medioTransporte === 'Bus',
+                        'bg-warning': sat.medioTransporte === 'Auto',
+                        'bg-danger': sat.medioTransporte === 'Barco'
+                      }">
+                            Medio de Transporte: {{ sat.medioTransporte }}
+
+                      </span>
+                    </div>
+                    <div class="container">
+                        <span class="badge mb-2 p-2" [ngClass]="{
+                        'bg-secondary': sat.estado === 'Pendiente',
+                        'bg-primary bg-gradient': sat.estado === 'En proceso',
+                        'bg-success': sat.estado === 'Completado',
+                        'bg-danger': sat.estado === 'Cancelado'
+                      }">
+                            Estado del Viaje: {{ sat.estado }}
+                      </span>
+
+                        <div class="container" style="display: flex; justify-content: flex-end;">
+                            <span class="badge mb-2 p-2" [ngClass]="{
                         'bg-success': sat.Costo === 'BARATO',
                         'bg-warning': sat.Costo === 'CARO',
                         'bg-danger': sat.Costo === 'PREMIUM'
                             }">Costo de Viaje: {{ sat.Costo }}
                       </span>
-                        <!-- <span class="badge mb-2 p-2" [ngClass]="{'bg-success': sat.Costo === 'BARATO', 'bg-warning': sat.Costo === 'CARO', 'bg-danger'  sat.Costo === 'PREMIUM'}">
+                            <!-- <span class="badge mb-2 p-2" [ngClass]="{'bg-success': sat.Costo === 'BARATO', 'bg-warning': sat.Costo === 'CARO', 'bg-danger'  sat.Costo === 'PREMIUM'}">
                  Costo de Viaje: {{ sat.Costo }}
                 </span> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         }
     </div>
-    <!-- </div> -->
+    }@else {
+
+    <div class="container d-flex justify-content-center align-items-center" style="height: 200px;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
     }
-    <!-- </div> -->
+
 </div>
