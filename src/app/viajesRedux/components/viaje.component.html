@@ -1,5 +1,5 @@
 <div class="container-fluid shadow p-3 mt-2 mb-5 bg-body-tertiary rounded">
-    <h4 style="text-align: center;">Panel de Viajes</h4>
+    <h4 style="text-align: center; ">Panel de Viajes</h4>
 
     <!-- Utilizacion de filtro @if -->
     @if (currentFilter$ | async; as activeFilter) {
@@ -16,51 +16,43 @@
     @if (!(loading$ | async)) {
     <div class="row g-3">
         @for (sat of (viajes$ | async); track sat.idViaje) {
-        <div class="col-12 col-md-6 col-lg-6">
-            <div class="card m-2  ">
-                <h5 style="text-align: center;">Viaje: {{ sat.idViaje }}</h5>
-                <div class=" p-2">
+        <div class="col-12 col-md-6 col-lg-6 ">
+            <div class="card m-2 p-2 ">
+                <h5 class="mt-2" style="text-align: center;">Viaje: {{ sat.idViaje }}</h5>
+
+                <div class="col-md-12 p-2">
                     <p>Nombre Pasajero: <strong>{{ sat.NombrePasajero }} </strong></p>
                     <p>Destino: <strong>{{ sat.Destino }}</strong></p>
                     <p>Fecha de Viaje : {{sat.fecha}}</p>
                     <p>Origen: <strong>{{sat.origen}}</strong> </p>
                     <p>Duración del Viaje: <strong>{{sat.duracion}} horas</strong></p>
+                </div>
 
-                    <div class="container">
-                        <span class="badge mb-2 p-2" [ngClass]="{
-                        'bg-secondary': sat.medioTransporte === 'Avion',
-                        'bg-primary bg-gradient': sat.medioTransporte === 'Tren',
-                        'bg-success': sat.medioTransporte === 'Bus',
-                        'bg-warning': sat.medioTransporte === 'Auto',
-                        'bg-danger': sat.medioTransporte === 'Barco'
-                      }">
+                <div class="d-flex flex-row  align-items-center p-1 m-1 badge bg-body-secondary rounded">
+                    <div class="col-md-4 m-1 ">
+                        <span class="badge text-light bg-secondary w-100  p-2 ">
                             Medio de Transporte: {{ sat.medioTransporte }}
 
                       </span>
                     </div>
-                    <div class="container">
-                        <span class="badge mb-2 p-2" [ngClass]="{
-                        'bg-secondary': sat.estado === 'Pendiente',
-                        'bg-primary bg-gradient': sat.estado === 'En proceso',
-                        'bg-success': sat.estado === 'Completado',
-                        'bg-danger': sat.estado === 'Cancelado'
-                      }">
+                    <div class="col-md-4 m-1">
+                        <span class="badge w-100 p-2 bg-secondary">
                             Estado del Viaje: {{ sat.estado }}
                       </span>
-
-                        <div class="container" style="display: flex; justify-content: flex-end;">
-                            <span class="badge mb-2 p-2" [ngClass]="{
+                    </div>
+                    <div class="col-md-3 m-1 ">
+                        <span class="badge w-100 p-2 " [ngClass]="{
                         'bg-success': sat.Costo === 'BARATO',
-                        'bg-warning': sat.Costo === 'CARO',
+                        'bg-warning text-dark': sat.Costo === 'CARO',
                         'bg-danger': sat.Costo === 'PREMIUM'
-                            }">Costo de Viaje: {{ sat.Costo }}
+                            }">Viaje: {{ sat.Costo }}
                       </span>
-                            <!-- <span class="badge mb-2 p-2" [ngClass]="{'bg-success': sat.Costo === 'BARATO', 'bg-warning': sat.Costo === 'CARO', 'bg-danger'  sat.Costo === 'PREMIUM'}">
+                        <!-- <span class="badge mb-2 p-2" [ngClass]="{'bg-success': sat.Costo === 'BARATO', 'bg-warning': sat.Costo === 'CARO', 'bg-danger'  sat.Costo === 'PREMIUM'}">
                  Costo de Viaje: {{ sat.Costo }}
                 </span> -->
-                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
         }
