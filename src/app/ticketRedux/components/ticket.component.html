@@ -1,0 +1,64 @@
+<div class="container-fluid shadow p-3 mt-4 bg-body-tertiary rounded" style="padding: 20px; font-family: sans-serif; max-width: 900px; margin: 0 auto;">
+    <h2 style="text-align: center; font-weight: bold;">Mesa de soporte Tecnico</h2>
+
+
+    <div *ngIf="cargando$ | async" style="color: #666; font-style: italic; margin-bottom: 15px;">
+        Cargando lista de tickets locales...
+    </div>
+
+    <!-- FORMULARIO -->
+    <div style="background: #dde0e4; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <h3>Nuevo ticket de incidencia</h3>
+        <input type="text" [(ngModel)]="inputTitulo" placeholder="Titulo corto" style="width: 100%; margin-bottom: 10px; padding: 6px;">
+        <textarea [(ngModel)]="inputDescripcion" placeholder="Describe el problema técnico..." style="width: 100%; margin-bottom: 10px; padding: 6px;"></textarea>
+
+        <label for="">Categoria: </label>
+        <select class="badge bg-secondary m-2 p-2" [(ngModel)]="inputCategoria" style="margin-right: 15px; padding: 4px;">
+        <option value="Software">Software</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Redes"> Redes</option>
+      </select>
+
+        <label for="">Prioridad: </label>
+        <select class="badge bg-secondary m-2 p-2" [(ngModel)]="inputPrioridad" style="margin-right: 15px; padding: 4px; ">
+        <option value="Baja">Baja</option>
+        <option value="Media">Media</option>
+        <option value="Alta">Alta</option>
+      </select>
+
+        <button [disabled]="!inputTitulo.trim() || !inputDescripcion.trim()" (click)="guardarTicket()" style="padding: 6px 12px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+  Registrar Ticket
+</button>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="mb-4 d-flex justify-content-end">
+        <!-- <strong class="w-100">Filtrar por: </strong> -->
+        <button class="btn btn-outline-success" *ngFor="let cat of ['Todos', 'Software', 'Hardware', 'Redes']" (click)="aplicarFiltro(cat)" [style.font-weight]="(filtroActual$ | async) === cat ? 'bold' : 'normal' " style="margin-right: 5px; padding: 5px 10px;">
+          {{cat}}
+      </button>
+    </div>
+
+
+    <!-- LISTADO -->
+    <div *ngIf="!(cargando$ | async)">
+        <h3>Lista de Incidentes registrados</h3>
+        <p *ngIf="!(tickets$ | async)?.length"> No hay ningun ticket en esta categoria</p>
+
+        <div *ngFor="let tck of tickets$ | async" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 6px; position: relative;">
+            <span style="position: absolute; right: 15px; top: 15px; background: #eee; padding: 3px 8px; border-radius: 4px; font-size: 12px;">{{ tck.id }}</span>
+            <h4>{{ tck.titulo }} <span style="color: #dc3545; font-size: 13px;">({{ tck.prioridad }} Prioridad)</span></h4>
+            <p style="color: #555;">{{ tck.descripcion }}</p>
+            <p><small>Categoría: <strong>{{ tck.categoria }}</strong></small></p>
+
+            <label>Estado actual: </label>
+            <select class="bagde bg-primary m-2 p-2 rounded text-white text-center" [value]="tck.estado" (change)="actualizarEstado(tck.id, $event)">
+        <option value="Abierto">Abierto</option>
+        <option value="En Proceso">En Proceso</option>
+        <option value="Resuelto">Resuelto</option>
+      </select>
+        </div>
+
+    </div>
+
+</div>

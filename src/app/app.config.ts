@@ -16,6 +16,12 @@ import { ViajeReduxReducer } from './viajesRedux/store/reducers/viajes.reducers'
 import { ViajeReduxEffects } from './viajesRedux/store/effects/viajes.effects';
 import { audioReducer } from './ac-Audio/store/reducers/audio.reducers';
 import { AudioEffects } from './ac-Audio/store/effects/audio.effects';
+import { supportReducer } from './ticketRedux/store/reducers/ticket.reducers';
+import { TicketEffects } from './ticketRedux/store/effects/ticket.effects';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideToastr } from 'ngx-toastr';
+
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -30,12 +36,14 @@ export const appConfig: ApplicationConfig = {
       climaEspacial: ClimaEspacialReducer,
       viajeRedux:ViajeReduxReducer,
       audio: audioReducer,
+      soporteModulo: supportReducer,
 
     }),
     provideEffects([
       ClimaEspacialEffects,
       ViajeReduxEffects,
       AudioEffects,
+      TicketEffects,
     ]),
 
     provideState({name: 'todos', reducer: todoReducer}),
@@ -43,5 +51,11 @@ export const appConfig: ApplicationConfig = {
     provideState({name: 'tema', reducer: temaReducer}),
 
     // provideState({name: 'climaEspacial', reducer: ClimaEspacialReducer}),
+    provideAnimations(),
+    provideToastr({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ]
 };
