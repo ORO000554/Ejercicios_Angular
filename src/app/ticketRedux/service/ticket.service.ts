@@ -16,7 +16,7 @@ export class TicketService{
       descripcion: 'La impresora laser no conecta al servidor de red. ',
       categoria: 'Redes',
       prioridad: 'Alta',
-      estado: 'Abierto',
+      estado: 'En proceso',
       fechaCreacion: new Date()
     },
     {
@@ -25,7 +25,7 @@ export class TicketService{
       descripcion: 'Solicitud de renovacion de liccencias para el equipo de desarrollo. ',
       categoria: 'Software',
       prioridad: 'Media',
-      estado: 'En proceso',
+      estado: 'Resuelto',
       fechaCreacion: new Date()
     },
     {
@@ -34,7 +34,7 @@ export class TicketService{
       descripcion: 'Solicitud para la instalacion de Office. ',
       categoria: 'Software',
       prioridad: 'Media',
-      estado: 'En proceso',
+      estado: 'Abierto',
       fechaCreacion: new Date()
     },
     {

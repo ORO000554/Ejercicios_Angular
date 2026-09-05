@@ -7,7 +7,10 @@ export const selectSupportState = createFeatureSelector<SupportState>('soporteMo
 export const selectFiltroActual = createSelector(selectSupportState, (state) => state.filtroCategoria);
 export const selectCargando = createSelector(selectSupportState, (state) => state.cargando );
 
-export const selectTodosTickets = createSelector(selectSupportState, (state) => state.tickets);
+export const selectTodosTickets = createSelector(
+  selectSupportState,
+  (state) => state.tickets
+);
 
 export const selectTicketsFiltrados = createSelector(
   selectTodosTickets,

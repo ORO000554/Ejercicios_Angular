@@ -1,22 +1,26 @@
 import { CommonModule } from "@angular/common";
 import { Component, inject, OnInit } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import * as Selectors from '../store/selectors/ticket.selectors';
 import { TicketActions } from "../store/actions/ticket.actions";
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-ticket-component',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './ticket.component.html',
 
 })
 export class TicketComponent implements OnInit{
-  constructor(private toastr: ToastrService){}
 
 
+  constructor(private toastr: ToastrService, private form: FormBuilder){}
+
+  miForm!: FormGroup;
+  // constructor(private form: FormBuilder){}
 
   private store = inject(Store);
 
@@ -25,34 +29,49 @@ export class TicketComponent implements OnInit{
   cargando$ = this.store.select(Selectors.selectCargando);
 
 
-  inputTitulo = '';
-  inputDescripcion = '';
+  inputTitulo: string = '';
+  inputDescripcion: string = '';
   inputCategoria: 'Hardware' | 'Software' | 'Redes' = 'Software';
   inputPrioridad: 'Baja' | 'Media' | 'Alta' = 'Media';
 
   ngOnInit(): void {
+
+    this.miForm = this.form.group({
+      //el parametro required hace que sea oligattorio
+      inputTitulo: ['', Validators.required],
+      inputDescripcion: ['', Validators.required],
+      inputCategoria: ['', Validators.required],
+      inputPrioridad: ['', Validators.required]
+    })
     //con el componente se dispara la accion para obtener el effect + service
     this.store.dispatch(TicketActions.cargarTicketsIniciales());
 
+
   }
   guardarTicket(){
-    if(!this.inputTitulo.trim() || !this.inputDescripcion.trim()){
-
-      alert('No ha rellenado el formulario!!')
-
+    if(this.miForm.invalid){
+      this.toastr.error('No ha rellenado el formulario!!, por favor rellena el formulario')
        return;
     }
+    const formValues = this.miForm.value;
+
     this.store.dispatch(TicketActions.crearTicket({
-      titulo: this.inputTitulo,
-      descripcion: this.inputDescripcion,
-      categoria: this.inputCategoria,
-      prioridad: this.inputPrioridad
+      titulo: formValues.inputTitulo,
+    descripcion: formValues.inputDescripcion,
+    categoria: formValues.inputCategoria, // Enviamos el valor seleccionado (ej. 'Hardware')
+    prioridad: formValues.inputPrioridad
     }));
+    this.miForm.reset({
+     inputTitulo : '',
+    inputDescripcion : '',
+    inputCategoria: '',
+    inputPrioridad: '',
 
-    this.inputTitulo = '';
-    this.inputDescripcion = '';
+    })
 
+// Alerta para mostrar el resultado corrrecto
     this.toastr.success('Ticket agregado correctamente!')
+    console.log(this.miForm.value)
   }
   actualizarEstado(id: string, event: Event){
 
